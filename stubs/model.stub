@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\BaseModel;
+
+class {{ class }} extends BaseModel
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        // Add fillable
+    ];
+
+    protected $casts = [
+        // Define casts
+    ];
+}
