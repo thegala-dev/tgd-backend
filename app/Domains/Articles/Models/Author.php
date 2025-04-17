@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string|null $user_id
  * @property string $name
@@ -17,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read User|null $user
- *
  * @method static \Database\Factories\Domains\Articles\Models\AuthorFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Author newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Author newQuery()
@@ -32,7 +33,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Author whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Author withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Author withoutTrashed()
- *
+ * @property-read string $slug_source
  * @mixin \Eloquent
  */
 class Author extends BaseModel

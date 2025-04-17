@@ -34,14 +34,12 @@ class ArticleFactory extends Factory
         ];
     }
 
-    public function configure(): static
+    public function withCategories(array $categories): ArticleFactory|Factory
     {
-        return $this->afterCreating(function (Article $article) {
-            Tag::factory()
-                ->count(rand(1, 3))
-                ->create()
-                ->each(fn (Tag $tag) => $article->tags()->attach($tag));
-        });
+        return $this->state(fn (array $attributes) => [
+            ...$attributes,
+            'categories' => $categories,
+        ]);
     }
 
     public function withAuthor(): ArticleFactory
@@ -52,9 +50,10 @@ class ArticleFactory extends Factory
     public function withTags(): ArticleFactory
     {
         return $this->afterCreating(function (Article $article) {
-            $article->tags()->attach(
-                Tag::factory()->count(3)->create()
-            );
+            Tag::factory()
+                ->count(rand(1, 3))
+                ->create()
+                ->each(fn (Tag $tag) => $article->tags()->attach($tag));
         });
     }
 }

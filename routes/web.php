@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::fallback(fn () => throw new HttpException(
+    statusCode: \Symfony\Component\HttpFoundation\Response::HTTP_UNAUTHORIZED,
+    message: 'Unauthorized'
+));

@@ -8,6 +8,8 @@ use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string $label
  * @property string $slug
@@ -15,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
- *
  * @method static \Database\Factories\Domains\Articles\Models\TagFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newQuery()
@@ -29,7 +30,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag withoutTrashed()
- *
+ * @property-read string $slug_source
  * @mixin \Eloquent
  */
 class Tag extends BaseModel

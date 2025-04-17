@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string $author_id
  * @property string $title
@@ -32,7 +34,6 @@ use Illuminate\Support\Carbon;
  * @property-read \App\Domains\Articles\Models\Author $author
  * @property-read Collection<int, \App\Domains\Articles\Models\Tag> $tags
  * @property-read int|null $tags_count
- *
  * @method static \Database\Factories\Domains\Articles\Models\ArticleFactory factory($count = null, $state = [])
  * @method static Builder<static>|Article newModelQuery()
  * @method static Builder<static>|Article newQuery()
@@ -53,7 +54,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Article whereUpdatedAt($value)
  * @method static Builder<static>|Article withTrashed()
  * @method static Builder<static>|Article withoutTrashed()
- *
+ * @property-read string $slug_source
+ * @method static Builder<static>|Article withCategories(array $categories)
  * @mixin Eloquent
  */
 class Article extends BaseModel
@@ -113,5 +115,13 @@ class Article extends BaseModel
     public function getSlugSourceAttribute(): string
     {
         return 'title';
+    }
+
+    /**
+     * @param  array<Category>  $categories
+     */
+    public function scopeWithCategories(Builder $query, array $categories): Builder
+    {
+        return $query->whereJsonContains('categories', $categories, 'or');
     }
 }
